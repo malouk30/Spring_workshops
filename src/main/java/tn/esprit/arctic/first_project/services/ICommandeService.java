@@ -10,4 +10,6 @@ public interface ICommandeService {
     void delete(Long id);
     Commande findById(Long id);
     List<Commande> findAll();
-}
+
+     void ajouterCommandeEtaffecterAClientEtMenu(Commande commande, String identifiant, String libelleMenu) ;
+    }

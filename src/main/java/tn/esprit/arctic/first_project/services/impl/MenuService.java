@@ -2,11 +2,14 @@ package tn.esprit.arctic.first_project.services.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.esprit.arctic.first_project.entities.ChefCuisinier;
 import tn.esprit.arctic.first_project.entities.Menu;
+import tn.esprit.arctic.first_project.entities.Restaurant;
+import tn.esprit.arctic.first_project.repositories.ChefCuisinierRepository;
 import tn.esprit.arctic.first_project.repositories.MenuRepository;
 import tn.esprit.arctic.first_project.services.IMenuService;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -14,6 +17,7 @@ import java.util.List;
 public class MenuService implements IMenuService {
 
     private MenuRepository menuRepository;
+    private ChefCuisinierRepository   chefCuisinierService;
 
     @Override
     public Menu save(Menu menu) {

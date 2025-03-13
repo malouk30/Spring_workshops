@@ -10,4 +10,10 @@ public interface IRestaurantService {
     void delete(Long id);
     Restaurant findById(Long id);
     List<Restaurant> findAll();
+
+    Restaurant affecterRestaurantAChaineRestauration(String nomRestaurant, String libelleChaine);
+    Restaurant ajoutRestaurantEtMenuAssocies(Restaurant restaurant);
+
+
+
 }

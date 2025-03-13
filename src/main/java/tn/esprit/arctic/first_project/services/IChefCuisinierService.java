@@ -10,4 +10,6 @@ public interface IChefCuisinierService {
     void delete(Long id);
     ChefCuisinier findById(Long id);
     List<ChefCuisinier> findAll();
-}
+
+    ChefCuisinier affecterChefCuisinierAMenu(Long idChefCuisinier, Long idMenu);
+    ChefCuisinier desaffecterChefCuisinierDuMenu(Long idMenu, Long idChefCuisinier);}

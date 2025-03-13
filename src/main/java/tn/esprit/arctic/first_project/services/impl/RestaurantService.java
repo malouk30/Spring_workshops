@@ -1,12 +1,14 @@
 package tn.esprit.arctic.first_project.services.impl;
-
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.esprit.arctic.first_project.entities.ChaineRestauration;
+import tn.esprit.arctic.first_project.entities.Menu;
 import tn.esprit.arctic.first_project.entities.Restaurant;
+import tn.esprit.arctic.first_project.repositories.ChaineRestaurationRepository;
 import tn.esprit.arctic.first_project.repositories.RestaurantRepository;
 import tn.esprit.arctic.first_project.services.IRestaurantService;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -14,6 +16,8 @@ import java.util.List;
 public class RestaurantService implements IRestaurantService {
 
     private RestaurantRepository restaurantRepository;
+
+    private ChaineRestaurationRepository chaineRestaurationRepository;
 
     @Override
     public Restaurant save(Restaurant restaurant) {
@@ -39,4 +43,35 @@ public class RestaurantService implements IRestaurantService {
     public List<Restaurant> findAll() {
         return restaurantRepository.findAll();
     }
+
+
+
+    public Restaurant affecterRestaurantAChaineRestauration(String nomRestaurant, String libelleChaine) {
+        Restaurant restaurant = restaurantRepository.findByNom(nomRestaurant);
+
+        ChaineRestauration chaineRestauration = chaineRestaurationRepository.findByLibelle(libelleChaine);
+
+        restaurant.setChainerestauration(chaineRestauration);
+
+        return restaurantRepository.save(restaurant);
+    }
+
+    public Restaurant ajoutRestaurantEtMenuAssocies(Restaurant restaurant) {
+        Set<Menu> menus  =  new HashSet<>();
+        for (Menu menu : restaurant.getMenus()) {
+
+            menu.setPrixTotal((float) 0);
+            menus.add(menu);
+
+        }
+
+        restaurant.setMenus(menus);
+
+        restaurantRepository.save(restaurant);
+        return restaurant;
+    }
+
+
+
+
 }

@@ -49,4 +49,8 @@ RestaurantRepository restaurantRepository;
     {
         return restaurantRepository.findByNbPlacesMaxGreaterThanAndChainerestaurationDateCreationBefore(capacite,date);
     }
-}
+
+
+
+
+    }

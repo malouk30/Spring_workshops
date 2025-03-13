@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 import tn.esprit.arctic.first_project.entities.ChaineRestauration;
 @Repository
 public interface ChaineRestaurationRepository extends JpaRepository<ChaineRestauration, Long> {
+    ChaineRestauration findByLibelle(String libelleChaine);
 }
