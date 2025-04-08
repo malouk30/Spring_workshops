@@ -53,7 +53,15 @@ public class CommandeService implements ICommandeService {
     }
 
 
+    /*
+    Créer un service permettant l’ajout d’une commande et de l’associer au client et menu en
+paramètres et exposer le en respectant la signature suivante :
+void ajouterCommandeEtaffecterAClientEtMenu(Commande commande, String identifiant,
+String libelleMenu);
+PS ; Le total commande et le total remise est calculable selon le prix du menu envoyé et le
+pourcentage de la remise
 
+    * */
 
     public void ajouterCommandeEtaffecterAClientEtMenu(Commande commande, String identifiant, String libelleMenu) {
         Client client = clientRepository.findByIdentifiant(identifiant);
