@@ -1,5 +1,6 @@
 package tn.esprit.arctic.first_project.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class Composant {
     @OneToOne
     private DetailComposant detailcomposant;
 
+    @JsonIgnore
     @ManyToOne
     Menu menu;
 

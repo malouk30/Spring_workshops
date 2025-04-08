@@ -3,10 +3,12 @@ package tn.esprit.arctic.first_project.services.impl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.arctic.first_project.entities.Composant;
+import tn.esprit.arctic.first_project.entities.Menu;
 import tn.esprit.arctic.first_project.repositories.ComposantRepository;
 import tn.esprit.arctic.first_project.services.IComposantService;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -39,4 +41,6 @@ public class ComposantService implements IComposantService {
     public List<Composant> findAll() {
         return composantRepository.findAll();
     }
+
+
 }

@@ -3,15 +3,19 @@ package tn.esprit.arctic.first_project.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.arctic.first_project.entities.Composant;
+import tn.esprit.arctic.first_project.entities.Menu;
 import tn.esprit.arctic.first_project.services.IComposantService;
+import tn.esprit.arctic.first_project.services.impl.MenuService;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/Composant")
 public class ComposantController {
     IComposantService ComposantService;
+    MenuService menuService;
 
     @GetMapping("/retrieve-all-Composants")
     public List<Composant> getComposant() {
@@ -33,4 +37,6 @@ public class ComposantController {
     public Composant updateComposant(@RequestBody Composant c) {
         return ComposantService.update(c);
     }
+
+
 }
