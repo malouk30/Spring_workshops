@@ -1,9 +1,6 @@
 package tn.esprit.arctic.first_project.services;
 
-import tn.esprit.arctic.first_project.entities.ChefCuisinier;
-import tn.esprit.arctic.first_project.entities.Composant;
-import tn.esprit.arctic.first_project.entities.Menu;
-import tn.esprit.arctic.first_project.entities.Restaurant;
+import tn.esprit.arctic.first_project.entities.*;
 
 import java.util.List;
 import java.util.Set;
@@ -14,7 +11,11 @@ public interface IMenuService {
     void delete(Long id);
     Menu findById(Long id);
     List<Menu> findAll();
-
-
+    
     Menu ajoutComposantsEtMiseAjourPrixMenu(Set<Composant> composants, Long idMenu);
+
+    List<String> nomMenuParTypeMenuOrdonneParPrixTotal(TypeMenu typeMenu);
+
+    List <Menu> listeMenuSelonTypeMenuEtprixComposantsSuperieurAUnMontant(
+            TypeMenu  typeMenu, Float prixTotal);
 }

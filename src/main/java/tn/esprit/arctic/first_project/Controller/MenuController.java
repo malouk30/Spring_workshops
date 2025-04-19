@@ -1,7 +1,6 @@
 package tn.esprit.arctic.first_project.controller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.arctic.first_project.entities.Composant;
 import tn.esprit.arctic.first_project.entities.Menu;
@@ -69,5 +68,18 @@ MenuRepository MenuRepo;
         return MenuService.ajoutComposantsEtMiseAjourPrixMenu(composants, idMenu);
     }
 
+    @GetMapping("/nomMenuParTypeMenuOrdonneParPrixTotal/{typeMenu}")
+    public List<String> nomMenuParTypeMenuOrdonneParPrixTotal(@PathVariable("typeMenu") String TM){
+        TypeMenu typeMenu = TypeMenu.valueOf(TM.toUpperCase());
+        return MenuService.nomMenuParTypeMenuOrdonneParPrixTotal(typeMenu);
+    }
+
+    @GetMapping("/listeMenuSelonTypeMenuEtprixComposantsSuperieurAUnMontant/{typeMenu}/{prixTotal}")
+    public List<Menu> listeMenuSelonTypeMenuEtprixComposantsSuperieurAUnMontant(
+            @PathVariable("typeMenu") String TM,
+            @PathVariable("prixTotal") Float prixTotal) {
+        TypeMenu typeMenu = TypeMenu.valueOf(TM.toUpperCase());
+        return MenuService.listeMenuSelonTypeMenuEtprixComposantsSuperieurAUnMontant(typeMenu, prixTotal);
+    }
 
 }

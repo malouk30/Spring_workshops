@@ -2,8 +2,7 @@ package tn.esprit.arctic.first_project.services.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import tn.esprit.arctic.first_project.entities.Composant;
-import tn.esprit.arctic.first_project.entities.Menu;
+import tn.esprit.arctic.first_project.entities.*;
 import tn.esprit.arctic.first_project.repositories.ChefCuisinierRepository;
 import tn.esprit.arctic.first_project.repositories.ComposantRepository;
 import tn.esprit.arctic.first_project.repositories.MenuRepository;
@@ -17,8 +16,8 @@ import java.util.*;
 public class MenuService implements IMenuService {
 
     private MenuRepository menuRepository;
-    private ChefCuisinierRepository   chefCuisinierService;
     private ComposantRepository composantRepository;
+    private ChefCuisinierRepository chefCuisinierService;
 
     @Override
     public Menu save(Menu menu) {
@@ -44,6 +43,32 @@ public class MenuService implements IMenuService {
     public List<Menu> findAll() {
         return menuRepository.findAll();
     }
+
+
+
+
+
+
+
+
+    public  List<String> nomMenuParTypeMenuOrdonneParPrixTotal(TypeMenu typeMenu){
+        List<Menu> menus = menuRepository.findByTypeMenuAndOrderByPrixTotal(typeMenu);
+        List<String> nomMenus = new ArrayList<>();
+
+        for (Menu menu : menus) {
+            nomMenus.add(menu.getLibelleMenu());
+        }
+
+        return nomMenus;
+    }
+
+
+    public List <Menu> listeMenuSelonTypeMenuEtprixComposantsSuperieurAUnMontant(
+            TypeMenu  typeMenu, Float prixTotal){
+      return menuRepository.findByTypeMenuAndPrixTotalGreaterThan(typeMenu, prixTotal);
+    }
+
+
 
 
     @Override
@@ -75,10 +100,7 @@ public class MenuService implements IMenuService {
 
         return menuRepository.save(menu);
     }
+
+
+
 }
-
-
-
-
-
-

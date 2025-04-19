@@ -1,6 +1,7 @@
 package tn.esprit.arctic.first_project.services;
 
 import tn.esprit.arctic.first_project.entities.ChefCuisinier;
+import tn.esprit.arctic.first_project.entities.TypeChef;
 
 import java.util.List;
 
@@ -12,4 +13,9 @@ public interface IChefCuisinierService {
     List<ChefCuisinier> findAll();
 
     ChefCuisinier affecterChefCuisinierAMenu(Long idChefCuisinier, Long idMenu);
-    ChefCuisinier desaffecterChefCuisinierDuMenu(Long idMenu, Long idChefCuisinier);}
+    ChefCuisinier desaffecterChefCuisinierDuMenu(Long idMenu, Long idChefCuisinier);
+
+    List<ChefCuisinier> listChefCuisinierByTypeChefAndNomRestaurant(TypeChef typeChef, String
+            nomRestaurant);
+
+}

@@ -56,4 +56,20 @@ CommandeRepository commandeRepository;
         return commandeRepository.findByDateCommandeBetweenOrderByTotalCommandeAscNoteAsc(date1,date2);
     }
 
+    @PostMapping("/ajouter-commande/{identifiant}/{libelleMenu}")
+    public Commande ajouterCommandeEtaffecterAClientEtMenu(
+            @RequestBody Commande commande,
+            @PathVariable("identifiant") String identifiant,
+            @PathVariable("libelleMenu") String libelleMenu) {
+        CommandeService.ajouterCommandeEtaffecterAClientEtMenu(commande, identifiant, libelleMenu);
+        return commande;
+    }
+
+    @PutMapping("/affecter-note/{idCommande}/{note}")
+    public void affecterNoteACommande(
+            @PathVariable("idCommande") Long idCommande,
+            @PathVariable("note") Long note) {
+        CommandeService.affecterNoteACommande(idCommande, note);
+    }
+
 }

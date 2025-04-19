@@ -1,7 +1,6 @@
 package tn.esprit.arctic.first_project.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,7 +27,6 @@ public class Menu {
     @OneToMany(cascade = CascadeType.ALL, mappedBy="menu")
     private Set<Commande> commandes;
 
-    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="menu")
     private Set<Composant> composants;
 

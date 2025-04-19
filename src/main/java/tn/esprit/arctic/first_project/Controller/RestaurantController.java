@@ -40,7 +40,12 @@ RestaurantRepository restaurantRepository;
         return RestaurantService.update(c);
     }
 
-
+    @PutMapping("/affecter-restaurant/{nomRestaurant}/{libelleChaine}")
+    public Restaurant affecterRestaurantAChaineRestauration(
+            @PathVariable("nomRestaurant") String nomRestaurant,
+            @PathVariable("libelleChaine") String libelleChaine) {
+        return RestaurantService.affecterRestaurantAChaineRestauration(nomRestaurant, libelleChaine);
+    }
 
     @GetMapping("/findByNbPlacesMaxGreaterThanAndChainerestaurationDateCreationBefore/{capacite}/{date}")
     public List<Restaurant> findByNbPlacesMaxGreaterThanAndChainerestaurationDateCreationBefore(
@@ -48,6 +53,11 @@ RestaurantRepository restaurantRepository;
             @PathVariable("date") LocalDate date)
     {
         return restaurantRepository.findByNbPlacesMaxGreaterThanAndChainerestaurationDateCreationBefore(capacite,date);
+    }
+
+    @PostMapping("/ajouter-restaurant-menus")
+    public Restaurant ajoutRestaurantEtMenuAssocies(@RequestBody Restaurant restaurant) {
+        return RestaurantService.ajoutRestaurantEtMenuAssocies(restaurant);
     }
 
 
